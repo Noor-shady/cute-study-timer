@@ -27,3 +27,16 @@ export default function useTimer(initialSettings = { focus: 25, break: 5, sound:
         setTimeLeft((time) => time - 1);
       }, 1000);
     } else if (isActive && timeLeft === 0) {
+      
+      // Play the bell sound
+      if (settings.sound && bellSound.current) {
+        bellSound.current.play().catch(e => console.log("Audio play blocked:", e));
+      }
+
+      // Automatically switch to the next mode
+      const nextMode = mode === 'focus' ? 'break' : 'focus';
+      setMode(nextMode);
+      setTimeLeft(settings[nextMode] * 60);
+      // Pause so the I can physically start my break/focus
+      setIsActive(false);
+    }
