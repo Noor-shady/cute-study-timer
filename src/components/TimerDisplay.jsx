@@ -15,3 +15,9 @@ export default function TimerDisplay({ timeLeft, mode }) {
 
   return (
     <div className="flex flex-col items-center justify-center my-6">
+      <h1 
+        className={`text-8xl md:text-9xl font-black tracking-wider ${textColor} drop-shadow-sm transition-colors duration-500`}
+        style={{ fontVariantNumeric: 'tabular-nums' }}
+      >
+        {formattedMinutes}:{formattedSeconds}
+      </h1>
