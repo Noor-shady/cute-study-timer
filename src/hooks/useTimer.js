@@ -18,3 +18,8 @@ export default function useTimer(initialSettings = { focus: 25, break: 5, sound:
       clickSound.current.play().catch(e => console.log("Audio play blocked:", e));
     }
   }, [settings.sound]);
+
+  useEffect(() => {
+    let interval = null;
+
+    if (isActive && timeLeft > 0) {
