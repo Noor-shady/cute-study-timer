@@ -15,3 +15,6 @@ export default function useLocalStorage(key, initialValue) {
       return initialValue;
     }
   });
+
+  const setValue = (value) => {
+    try {
