@@ -23,3 +23,7 @@ export default function useTimer(initialSettings = { focus: 25, break: 5, sound:
     let interval = null;
 
     if (isActive && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft((time) => time - 1);
+      }, 1000);
+    } else if (isActive && timeLeft === 0) {
