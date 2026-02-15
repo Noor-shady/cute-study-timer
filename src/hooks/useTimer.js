@@ -37,6 +37,37 @@ export default function useTimer(initialSettings = { focus: 25, break: 5, sound:
       const nextMode = mode === 'focus' ? 'break' : 'focus';
       setMode(nextMode);
       setTimeLeft(settings[nextMode] * 60);
-      // Pause so the I can physically start my break/focus
+       // Pause so I can physically start my break/focus
       setIsActive(false);
     }
+
+    return () => clearInterval(interval);
+  }, [isActive, timeLeft, mode, settings]);
+
+  // Control Functions
+  const toggleTimer = useCallback(() => {
+    playClick();
+    setIsActive((prev) => !prev);
+  }, [playClick]);
+
+  const resetTimer = useCallback(() => {
+    playClick();
+    setIsActive(false);
+    setTimeLeft(settings[mode] * 60);
+  }, [mode, settings, playClick]);
+
+  const skipSession = useCallback(() => {
+    playClick();
+    const nextMode = mode === 'focus' ? 'break' : 'focus';
+    setMode(nextMode);
+    setTimeLeft(settings[nextMode] * 60);
+    setIsActive(false);
+  }, [mode, settings, playClick]);
+
+  const updateSettings = useCallback((newSettings) => {
+    setSettings(newSettings);
+    // Reset to focus mode when settings change
+    setMode('focus');
+    setIsActive(false);
+    setTimeLeft(newSettings.focus * 60);
+  }, []);
