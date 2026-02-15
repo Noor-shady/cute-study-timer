@@ -31,3 +31,23 @@ export default function SettingsModal({ isOpen, onClose, currentSettings, onSave
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/20 backdrop-blur-sm transition-opacity">
+      
+      <div 
+        role="dialog" 
+        aria-modal="true"
+        className="relative w-full max-w-sm p-6 bg-white/90 backdrop-blur-md rounded-[2rem] shadow-2xl border border-white"
+      >
+        {/* Header & Close Button */}
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-bold text-slate-700">Timer Settings</h2>
+          <button 
+            onClick={onClose}
+            className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors"
+            aria-label="Close Settings"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        {/* Inputs Section */}
+        <div className="space-y-4">
