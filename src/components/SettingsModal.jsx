@@ -63,3 +63,47 @@ export default function SettingsModal({ isOpen, onClose, currentSettings, onSave
               className="w-20 p-2 text-center bg-slate-100 border-none rounded-xl focus:ring-2 focus:ring-amber-400 outline-none text-slate-700 font-bold"
             />
           </div>
+
+          <div className="flex items-center justify-between">
+            <label className="text-slate-600 font-medium">Break (minutes)</label>
+            <input 
+              type="number" 
+              min="1" 
+              max="30"
+              value={breakTime}
+              onChange={(e) => setBreakTime(e.target.value)}
+              className="w-20 p-2 text-center bg-slate-100 border-none rounded-xl focus:ring-2 focus:ring-blue-400 outline-none text-slate-700 font-bold"
+            />
+          </div>
+
+          <hr className="border-slate-200 my-4" />
+
+          {/* Sound Toggle */}
+          <div className="flex items-center justify-between">
+            <label className="text-slate-600 font-medium">Sound Effects</label>
+            <button 
+              onClick={() => setSoundEnabled(!soundEnabled)}
+              className={`p-3 rounded-xl flex items-center gap-2 transition-colors ${
+                soundEnabled ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-400'
+              }`}
+            >
+              {soundEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
+              <span className="text-sm font-bold">{soundEnabled ? 'ON' : 'OFF'}</span>
+            </button>
+          </div>
+
+        </div>
+
+        {/* Save Button */}
+        <button 
+          onClick={handleSave}
+          className="w-full mt-8 p-4 bg-slate-800 text-white rounded-2xl font-bold text-lg hover:bg-slate-700 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg"
+        >
+          <Save size={20} />
+          Save Changes
+        </button>
+
+      </div>
+    </div>
+  );
+}
