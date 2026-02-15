@@ -10,3 +10,11 @@ export default function useTimer(initialSettings = { focus: 25, break: 5, sound:
   // Audio References
   const bellSound = useRef(typeof Audio !== "undefined" ? new Audio('/sounds/bell.mp3') : null);
   const clickSound = useRef(typeof Audio !== "undefined" ? new Audio('/sounds/click.mp3') : null);
+
+  const playClick = useCallback(() => {
+    if (settings.sound && clickSound.current) {
+        // Reset sound to start
+      clickSound.current.currentTime = 0;
+      clickSound.current.play().catch(e => console.log("Audio play blocked:", e));
+    }
+  }, [settings.sound]);
