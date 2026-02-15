@@ -22,3 +22,13 @@ export const formatTime = (totalSeconds) => {
       if (totalFocusMinutes >= 120) return "You are an absolute machine today! Stay focused!";
       return "Deep breaths. I'm right here studying with you.";
     } 
+    
+    if (mode === 'break') {
+      if (totalFocusMinutes >= 120) {
+        return "Wow, you've been working hard! Please drink some water and stretch your back!";
+      }
+      return "Time to rest your eyes. You earned this break!";
+    }
+  
+    return "Let's be productive together!";
+  };
