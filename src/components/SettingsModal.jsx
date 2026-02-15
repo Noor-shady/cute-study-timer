@@ -51,3 +51,15 @@ export default function SettingsModal({ isOpen, onClose, currentSettings, onSave
 
         {/* Inputs Section */}
         <div className="space-y-4">
+          
+          <div className="flex items-center justify-between">
+            <label className="text-slate-600 font-medium">Focus (minutes)</label>
+            <input 
+              type="number" 
+              min="1" 
+              max="120"
+              value={focusTime}
+              onChange={(e) => setFocusTime(e.target.value)}
+              className="w-20 p-2 text-center bg-slate-100 border-none rounded-xl focus:ring-2 focus:ring-amber-400 outline-none text-slate-700 font-bold"
+            />
+          </div>
