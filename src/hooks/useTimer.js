@@ -37,7 +37,7 @@ export default function useTimer(initialSettings = { focus: 25, break: 5, sound:
       const nextMode = mode === 'focus' ? 'break' : 'focus';
       setMode(nextMode);
       setTimeLeft(settings[nextMode] * 60);
-       // Pause so I can physically start my break/focus
+      // Pause so I can physically start my break/focus
       setIsActive(false);
     }
 
@@ -71,3 +71,15 @@ export default function useTimer(initialSettings = { focus: 25, break: 5, sound:
     setIsActive(false);
     setTimeLeft(newSettings.focus * 60);
   }, []);
+
+  return {
+    timeLeft,
+    isActive,
+    mode,
+    settings,
+    toggleTimer,
+    resetTimer,
+    skipSession,
+    updateSettings
+  };
+}
