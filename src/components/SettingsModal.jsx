@@ -26,3 +26,7 @@ export default function SettingsModal({ isOpen, onClose, currentSettings, onSave
     // Close the modal after saving
     onClose();
   };
+
+  if (!isOpen) return null;
+
+  return (
