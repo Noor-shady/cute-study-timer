@@ -21,3 +21,5 @@ export default function App() {
 
   // Bring in Local Storage for Gamification
   const [totalMinutes, setTotalMinutes] = useLocalStorage('study-timer-score', 0);
+  
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
