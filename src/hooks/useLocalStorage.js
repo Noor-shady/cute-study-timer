@@ -9,3 +9,5 @@ export default function useLocalStorage(key, initialValue) {
     try {
       // Look in the browser's memory for this specific key
       const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
